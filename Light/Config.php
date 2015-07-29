@@ -6,7 +6,7 @@ class Config {
 
     public static function load()
     {
-        echo '@todo config load';
+        // echo '@todo config load';
     }
 
 }

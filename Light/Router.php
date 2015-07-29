@@ -31,7 +31,8 @@ class Router {
    */
   public static function __callstatic($method, $params)
   {
-    $uri = $params[0];
+    // $uri = $params[0];
+    $uri = dirname($_SERVER['PHP_SELF']).$params[0];
     $callback = $params[1];
 
     if ( $method == 'any' ) {
@@ -51,7 +52,6 @@ class Router {
     array_push(self::$routes, $uri);
     array_push(self::$methods, strtoupper($method));
     array_push(self::$callbacks, $callback);
-    var_dump(self::$routes);
   }
 
   /**
@@ -188,6 +188,7 @@ class Router {
       return '/';
     }
     $uri = parse_url($uri, PHP_URL_PATH);
-    return str_replace(array('//', '../'), '/', trim($uri, '/'));
+    // return str_replace(array('//', '../'), '/', trim($uri, '/'));
+    return str_replace(array('//', '../'), '/', $uri);
   }
 }

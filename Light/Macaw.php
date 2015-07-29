@@ -1,5 +1,5 @@
 <?php
-namespace NoahBuscher\Macaw;
+namespace Light;
 /**
  * @method static Macaw get(string $route, Callable $callback)
  * @method static Macaw post(string $route, Callable $callback)
