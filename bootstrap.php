@@ -26,15 +26,3 @@ Route::post('/foo', function() {
 });
 
 Route::dispatch();
-
-// use \Light\Macaw;
-
-// Macaw::get('/(:any)', function($slug) {
-//   echo 'The slug is: ' . $slug;
-// });
-
-// Macaw::get('/hou', function() {
-//   echo 'The slug is';
-// });
-
-// Macaw::dispatch();
