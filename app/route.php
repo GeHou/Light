@@ -1,10 +1,10 @@
 <?php
 
-use \Light\Router as Route;
+use \Light\Route;
 
 Route::get('/', function() {
   echo "GET /!";
-}, 'aaa');
+});
 
 Route::get('/(:any)', function($slug) {
   echo "GET Foo!<br />" . $slug;

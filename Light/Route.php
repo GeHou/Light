@@ -3,14 +3,14 @@
 namespace Light;
 
 /**
- * @method static Router get(string $route, Callable $callback)
- * @method static Router post(string $route, Callable $callback)
- * @method static Router put(string $route, Callable $callback)
- * @method static Router delete(string $route, Callable $callback)
- * @method static Router options(string $route, Callable $callback)
- * @method static Router head(string $route, Callable $callback)
+ * @method static Route get(string $route, Callable $callback)
+ * @method static Route post(string $route, Callable $callback)
+ * @method static Route put(string $route, Callable $callback)
+ * @method static Route delete(string $route, Callable $callback)
+ * @method static Route options(string $route, Callable $callback)
+ * @method static Route head(string $route, Callable $callback)
  */
-class Router {
+class Route {
 
   public static $routes = array();
 
