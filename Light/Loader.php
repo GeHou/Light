@@ -56,6 +56,8 @@ class Loader
      */
     protected $prefixes = array();
 
+    public static $aliases = array();
+
     /**
      * Register loader with SPL autoloader stack.
      * 
@@ -109,6 +111,10 @@ class Loader
     {
         // the current namespace prefix
         $prefix = $class;
+
+        if (isset(static::$aliases[$class])) {
+            class_alias(static::$aliases[$class], $class);
+        }
 
         // work backwards through the namespace names of the fully-qualified
         // class name to find a mapped file name

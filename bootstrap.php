@@ -7,10 +7,10 @@ $loader->register();
 $loader->addNamespace('Light', '../Light');
 
 $aliases = array(
-    'Route' => 'Laravel\\Auth',
-    'Auth' => 'Laravel\\Auth',
-    );
+    'Config' => 'Light\\Config',
+    'Route' => 'Light\\Router',
+);
 
-use \Light\Config as Config;
-class_alias('Light\Router', 'Route');
+Light\Loader::$aliases = $aliases;
+
 require '/app/route.php';
