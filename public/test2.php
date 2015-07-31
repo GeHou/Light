@@ -1,7 +1,9 @@
 <?php
 
+use test;
 require('test.php');
-use Test;
+
+
 class Test2 extends TestGo {
 
     public static function run()

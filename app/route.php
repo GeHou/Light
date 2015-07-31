@@ -1,7 +1,5 @@
 <?php
 
-use \Light\Route;
-
 Route::get('/', function() {
   echo "GET /!";
 });
