@@ -26,8 +26,8 @@ class Router {
    */
   public static function __callstatic($method, $params)
   {
-    // $uri = $params[0];
-    $uri = dirname($_SERVER['PHP_SELF']).$params[0];
+    $uri = $params[0];
+    // $uri = dirname($_SERVER['PHP_SELF']).$params[0];
     $callback = $params[1];
     if ( $method == 'any' ) {
       self::pushToArray($uri, 'get', $callback);
@@ -82,7 +82,8 @@ class Router {
             //grab the controller name and method call
             $segments = explode('@',$last);
             //instanitate controller
-            $controller = new $segments[0]();
+            // $controller = new $segments[0]();
+            $controller = Controller::execute($segments[0]);
             //call method
             $return = $controller->$segments[1]();
             if ($after) {
