@@ -9,6 +9,7 @@ $loader->addNamespace('Light', '../Light');
 $aliases = array(
     'Config' => 'Light\\Config',
     'Route' => 'Light\\Router',
+    'Controller' => 'Light\\Controller',
 );
 
 Light\Loader::$aliases = $aliases;

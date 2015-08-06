@@ -46,8 +46,7 @@ namespace Light;
  *      <?php
  *      new \Foo\Bar\Qux\QuuxTest;
  */
-class Loader
-{
+class Loader {
     /**
      * An associative array where the key is a namespace prefix and the value
      * is an array of base directories for classes in that namespace.

@@ -4,12 +4,14 @@ Route::get('/', function() {
   echo "GET /!";
 });
 
-Route::get('/(:any)', function($slug) {
+Route::get('/home', 'home@index');
+
+Route::get('/foo', function($slug) {
   echo "GET Foo!<br />" . $slug;
 });
 
-Route::get('/hou', function() {
-  echo "GET Foo! Single<br />";
+Route::get('/hou/(:num)', function($num) {
+  echo "The number is: {$num}<br />";
 });
 
 Route::post('/foo', function() {
