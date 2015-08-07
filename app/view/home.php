@@ -1,6 +1,8 @@
 <html>
-    <head></head>
+    <head>
+        Home page!
+    </head>
     <body>
-        Home View!
+        This is home page;
     </body>
 </html>
