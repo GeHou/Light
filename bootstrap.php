@@ -10,6 +10,7 @@ $aliases = array(
     'Config' => 'Light\\Config',
     'Route' => 'Light\\Router',
     'Controller' => 'Light\\Controller',
+    'View' => 'Light\\View',
 );
 
 Light\Loader::$aliases = $aliases;

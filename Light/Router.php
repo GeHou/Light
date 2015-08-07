@@ -20,7 +20,7 @@ class Router {
     ':num' => '[0-9]+',
     ':all' => '.*'
   );
-  public static $error_callback;
+  public static $errorCallback;
   /**
    * Defines a route w/ callback and method
    */
@@ -51,7 +51,7 @@ class Router {
   */
   public static function error($callback)
   {
-    self::$error_callback = $callback;
+    self::$errorCallback = $callback;
   }
   /**
    * Runs the callback for the given request
@@ -62,17 +62,17 @@ class Router {
    */
   public static function dispatch($after=null)
   {
-    $uri = self::detect_uri();
+    $uri = self::detectUri();
     $method = $_SERVER['REQUEST_METHOD'];
     $searches = array_keys(static::$patterns);
     $replaces = array_values(static::$patterns);
-    $found_route = false;
+    $foundRoute = false;
     // check if route is defined without regex
     if (in_array($uri, self::$routes)) {
-      $route_pos = array_keys(self::$routes, $uri);
-      foreach ($route_pos as $route) {
+      $routePos = array_keys(self::$routes, $uri);
+      foreach ($routePos as $route) {
         if (self::$methods[$route] == $method) {
-          $found_route = true;
+          $foundRoute = true;
           //if route is not an object
           if(!is_object(self::$callbacks[$route])){
             //grab all parts based on a / separator
@@ -87,8 +87,8 @@ class Router {
             //call method
             $return = $controller->$segments[1]();
             if ($after) {
-              $after_segments = explode('@', $after);
-              $after_segments[0]::$after_segments[1]($return);
+              $afterSegments = explode('@', $after);
+              $afterSegments[0]::$afterSegments[1]($return);
             }
           } else {
             //call closure
@@ -105,7 +105,7 @@ class Router {
         }
         if (preg_match('#^' . $route . '$#', $uri, $matched)) {
           if (self::$methods[$pos] == $method) {
-            $found_route = true;
+            $foundRoute = true;
             array_shift($matched); //remove $matched[0] as [1] is the first parameter.
             if(!is_object(self::$callbacks[$pos])){
               //grab all parts based on a / separator
@@ -119,8 +119,8 @@ class Router {
               //call method and pass any extra parameters to the method
               $return = $controller->$segments[1](implode(",", $matched));
               if ($after) {
-                $after_segments = explode('@', $after);
-                $after_segments[0]::$after_segments[1]($return);
+                $afterSegments = explode('@', $after);
+                $afterSegments[0]::$afterSegments[1]($return);
               }
             } else {
               call_user_func_array(self::$callbacks[$pos], $matched);
@@ -131,18 +131,18 @@ class Router {
       }
     }
     // run the error callback if the route was not found
-    if ($found_route == false) {
-      if (!self::$error_callback) {
-        self::$error_callback = function() {
+    if ($foundRoute == false) {
+      if (!self::$errorCallback) {
+        self::$errorCallback = function() {
           header($_SERVER['SERVER_PROTOCOL']." 404 Not Found");
           echo '404';
         };
       }
-      call_user_func(self::$error_callback);
+      call_user_func(self::$errorCallback);
     }
   }
   // detect true URI, inspired by CodeIgniter 2
-  private static function detect_uri()
+  private static function detectUri()
   {
     $uri = $_SERVER['REQUEST_URI'];
     if (strpos($uri, $_SERVER['SCRIPT_NAME']) === 0) {
