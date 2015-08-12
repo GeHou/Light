@@ -72,9 +72,14 @@ class View {
         return VIEW_BASE_PATH.$filePath.'.php';
     }
 
+    public static function startsWith($str, $search)
+    {
+        return stripos($str, $search) == 0;
+    }
+
     public function __call($method, $parameters)
     {
-        if(starts_with($method, 'with')) {
+        if(self::startsWith($method, 'with')) {
             return $this->with(snake_case(substr($method, 4)), $parameters[0]);
         }
 
