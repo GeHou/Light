@@ -1,6 +1,4 @@
-<?php
-
-namespace Light;
+<?php namespace Light;
 
 class Config {
 

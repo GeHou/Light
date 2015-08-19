@@ -1,6 +1,4 @@
-<?php
-
-namespace Light;
+<?php namespace Light;
 
 /**
  * @method static Router get(string $route, Callable $callback)

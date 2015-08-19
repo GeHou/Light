@@ -1,15 +1,16 @@
-<?php
+<?php namespace Light;
 
-namespace Light;
-
-/**
-* \View
-*/
 class View {
 
     public $view;
     public $data;
     public $isJson;
+
+    public static function make2($viewName = null, $data = array())
+    {
+        extract($data);
+        require self::getFilePath($viewName);
+    }
 
     public function __construct($view, $isJson = false)
     {

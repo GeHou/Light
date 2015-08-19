@@ -1,6 +1,4 @@
-<?php
-
-namespace Light;
+<?php namespace Light;
 
 /**
  * An example of a general-purpose implementation that includes the optional
