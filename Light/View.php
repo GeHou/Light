@@ -11,13 +11,14 @@ class View {
     public $data;
     public $isJson;
 
-    public function __construct($view, $isJson = false)
+    public function __construct($view, $data = array(), $isJson = false)
     {
         $this->view = $view;
+        $this->data = $data;
         $this->isJson = $isJson;
     }
 
-    public static function make($viewName = null)
+    public static function make($viewName = null, $data = array())
     {
         if(!defined('VIEW_BASE_PATH')) {
             throw new \InvalidArgumentException("VIEW_BASE_PATH is undefined!");
@@ -28,7 +29,7 @@ class View {
 
             $viewFilePath = self::getFilePath($viewName);
             if(is_file($viewFilePath)) {
-                return new View($viewFilePath);
+                return new View($viewFilePath, $data);
             } else {
                 throw new \UnexpectedValueException("View file does not exist!");
             }
