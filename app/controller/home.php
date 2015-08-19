@@ -4,7 +4,7 @@ class HomeController extends BaseController {
 
     public function index()
     {
-        View::make2('home', array());
+        View::make('home', array('title' => 'houbin'));
     }
 
 }
