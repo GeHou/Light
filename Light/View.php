@@ -29,12 +29,33 @@ class View {
 
             $viewFilePath = self::getFilePath($viewName);
             if(is_file($viewFilePath)) {
-                return new View($viewFilePath, $data);
+                ob_start() and extract($data, EXTR_SKIP);
+                require $viewFilePath;
+                $output = ob_get_clean();
+                echo ($output);
             } else {
                 throw new \UnexpectedValueException("View file does not exist!");
             }
         }
     }
+
+    // public static function make($viewName = null, $data = array())
+    // {
+    //     if(!defined('VIEW_BASE_PATH')) {
+    //         throw new \InvalidArgumentException("VIEW_BASE_PATH is undefined!");
+    //     }
+    //     if(!$viewName) {
+    //         throw new \InvalidArgumentException("View name can not be empty!");
+    //     } else {
+
+    //         $viewFilePath = self::getFilePath($viewName);
+    //         if(is_file($viewFilePath)) {
+    //             return new View($viewFilePath, $data);
+    //         } else {
+    //             throw new \UnexpectedValueException("View file does not exist!");
+    //         }
+    //     }
+    // }
 
     public static function json($arr)
     {

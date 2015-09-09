@@ -4,6 +4,7 @@
     </head>
     <body>
         This is home page;<br />
-        <?php echo $title; ?>
+        <? View::make('layout', get_defined_vars()); ?>
+        <?= $title; ?>
     </body>
 </html>
