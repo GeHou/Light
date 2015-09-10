@@ -7,8 +7,11 @@
  * Copyright 2015, Angel Lai
  * Released under the MIT license
  */
-class Medoo
-{
+
+use PDO;
+use Exception;
+
+class Medoo {
 	// General
 	protected $database_type;
 
@@ -133,7 +136,7 @@ class Medoo
 				$commands[] = "SET NAMES '" . $this->charset . "'";
 			}
 
-			$this->pdo = new \PDO(
+			$this->pdo = new PDO(
 				$dsn,
 				$this->username,
 				$this->password,
@@ -664,7 +667,7 @@ class Medoo
 		$query = $this->query($this->select_context($table, $join, $columns, $where));
 
 		return $query ? $query->fetchAll(
-			(is_string($columns) && $columns != '*') ? \PDO::FETCH_COLUMN : \PDO::FETCH_ASSOC
+			(is_string($columns) && $columns != '*') ? PDO::FETCH_COLUMN : PDO::FETCH_ASSOC
 		) : false;
 	}
 

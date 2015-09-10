@@ -11,6 +11,7 @@ $aliases = array(
     'Route' => 'Light\\Router',
     'Controller' => 'Light\\Controller',
     'View' => 'Light\\View',
+    'DB' => 'Light\\Database',
 );
 
 Light\Loader::$aliases = $aliases;
