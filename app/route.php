@@ -5,6 +5,7 @@ Route::get('/', function() {
 });
 
 Route::get('/home', 'home@index');
+Route::get('/home/db', 'home@db');
 
 Route::get('/foo', function($slug) {
   echo "GET Foo!<br />" . $slug;
