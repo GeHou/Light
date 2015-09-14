@@ -11,7 +11,9 @@ class HomeController extends BaseController {
     }
 
     public function db()
-    {   
+    {
+        var_dump(Config::get('db.connections'));
+        exit;
         $r = DB::connection()->select('stations', '*');
         var_dump($r);
     }

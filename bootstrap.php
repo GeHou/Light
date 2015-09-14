@@ -1,6 +1,7 @@
 <?php
 
 require '/Light/Loader.php';
+require '/Light/Helpers.php';
 
 $loader = new \Light\Loader;
 $loader->register();
@@ -15,5 +16,9 @@ $aliases = array(
 );
 
 Light\Loader::$aliases = $aliases;
+Light\Event::listen(Light\Config::loader, function($bundle, $file)
+{
+    return Light\Config::file($bundle, $file);
+});
 
 require '/app/route.php';

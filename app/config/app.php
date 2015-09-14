@@ -2,7 +2,7 @@
 
 return array(
 
-    'url' => '',
+    'url' => 'test.com',
 
     'key' => 'YourSecretKeyGoesHere!',
 

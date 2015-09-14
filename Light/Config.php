@@ -12,6 +12,13 @@ class Config {
     public static $items = array();
 
     /**
+     * A cache of the parsed bundle elements.
+     *
+     * @var array
+     */
+    public static $elements = array();
+
+    /**
      * A cache of the parsed configuration items.
      *
      * @var array
@@ -23,7 +30,7 @@ class Config {
      *
      * @var string
      */
-    const loader = 'laravel.config.loader';
+    const loader = 'light.config.loader';
 
     /**
      * Determine if a configuration item or file exists.
@@ -140,9 +147,9 @@ class Config {
             return static::$cache[$key];
         }
 
-        $bundle = Bundle::name($key);
+        $bundle = self::name($key);
 
-        $segments = explode('.', Bundle::element($key));
+        $segments = explode('.', self::element($key));
 
         // If there are not at least two segments in the array, it means that the
         // developer is requesting the entire configuration array to be returned.
@@ -219,17 +226,57 @@ class Config {
      */
     protected static function paths($bundle)
     {
-        $paths[] = Bundle::path($bundle).'config/';
+        $paths[] = APP_PATH.'/config/';
 
         // Configuration files can be made specific for a given environment. If an
         // environment has been set, we will merge the environment configuration
         // in last, so that it overrides all other options.
-        if ( ! is_null(Request::env()))
-        {
-            $paths[] = $paths[count($paths) - 1].Request::env().'/';
-        }
+        //@todo 配置环境切换
+        // if ( ! is_null(Request::env()))
+        // {
+        //     $paths[] = $paths[count($paths) - 1].Request::env().'/';
+        // }
 
         return $paths;
+    }
+
+    protected static function name($identifier)
+    {
+        list($bundle, $element) = static::parseEle($identifier);
+
+        return $bundle;
+    }
+
+    protected static function parseEle($identifier)
+    {
+        // The parsed elements are cached so we don't have to reparse them on each
+        // subsequent request for the parsed element. So if we've already parsed
+        // the given element, we'll just return the cached copy as the value.
+        if (isset(static::$elements[$identifier]))
+        {
+            return static::$elements[$identifier];
+        }
+
+        if (strpos($identifier, '::') !== false)
+        {
+            $element = explode('::', strtolower($identifier));
+        }
+        // If no bundle is in the identifier, we will insert the default bundle
+        // since classes like Config and Lang organize their items by bundle.
+        // The application folder essentially behaves as a default bundle.
+        else
+        {
+            $element = array('app', strtolower($identifier));
+        }
+
+        return static::$elements[$identifier] = $element;
+    }
+
+    protected static function element($identifier)
+    {
+        list($bundle, $element) = static::parseEle($identifier);
+
+        return $element;
     }
 
 }
