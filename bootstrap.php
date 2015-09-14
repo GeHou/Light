@@ -13,12 +13,13 @@ $aliases = array(
     'Controller' => 'Light\\Controller',
     'View' => 'Light\\View',
     'DB' => 'Light\\Database',
+    'Event' => 'Light\\Event',
 );
 
 Light\Loader::$aliases = $aliases;
-Light\Event::listen(Light\Config::loader, function($bundle, $file)
+Light\Event::listen(Light\Config::loader, function($file)
 {
-    return Light\Config::file($bundle, $file);
+    return Light\Config::file($file);
 });
 
 require '/app/route.php';

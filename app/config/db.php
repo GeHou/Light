@@ -26,6 +26,16 @@ return array(
             'prefix'   => '',
         ),
 
+        'pm25v2' => array(
+            'driver'   => 'mysql',
+            'host'     => '127.0.0.1',
+            'database' => 'pm25v2',
+            'username' => 'root',
+            'password' => 'root',
+            'charset'  => 'utf8',
+            'prefix'   => '',
+        ),
+
         'pgsql' => array(
             'driver'   => 'pgsql',
             'host'     => '127.0.0.1',
