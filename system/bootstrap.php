@@ -5,7 +5,7 @@ require 'system/tool/Helper.php';
 
 $loader = new \system\core\Loader;
 $loader->register();
-$loader->addNamespace('system', '../system');
+$loader->addNamespace('system', './system');
 
 $aliases = array(
     'Loader' => 'system\\core\\Loader',

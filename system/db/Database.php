@@ -2,7 +2,7 @@
 
 namespace system\db;
 
-use Light\Medoo;
+use system\db\Medoo;
 use PDO;
 
 class Database {
