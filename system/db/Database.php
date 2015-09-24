@@ -3,6 +3,7 @@
 namespace system\db;
 
 use system\db\Medoo;
+use system\core\Config;
 use PDO;
 
 class Database {

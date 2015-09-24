@@ -2,6 +2,8 @@
 
 namespace system\core;
 
+use system\tool\Helper as L;
+
 class Event {
 
 	/**
@@ -123,7 +125,7 @@ class Event {
 	 */
 	public static function first($event, $parameters = array())
 	{
-		return head(static::fire($event, $parameters));
+		return L::head(static::fire($event, $parameters));
 	}
 
 	/**

@@ -2,6 +2,8 @@
 
 namespace system\core;
 
+use system\tool\Helper as L;
+
 class Config {
 
     public static $items = array();
@@ -21,14 +23,14 @@ class Config {
     {
         list($file, $item) = static::parse($key);
 
-        if ( ! static::load($file)) return value($default);
+        if ( ! static::load($file)) return L::value($default);
 
         $items = static::$items[$file];
 
         if (is_null($item)) {
             return $items;
         } else {
-            return array_get($items, $item, $default);
+            return L::array_get($items, $item, $default);
         }
     }
 

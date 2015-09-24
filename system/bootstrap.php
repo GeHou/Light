@@ -15,6 +15,7 @@ $aliases = array(
     'View' => 'system\\view\\View',
     'DB' => 'system\\db\\Database',
     'Event' => 'system\\core\\Event',
+    'L' => 'system\\tool\\Helper',
 );
 
 system\core\Loader::$aliases = $aliases;
