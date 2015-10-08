@@ -1,6 +1,6 @@
 <?php
 
-namespace system\view;
+namespace system\core;
 
 /**
 * \View
@@ -28,6 +28,7 @@ class View {
         } else {
 
             $viewFilePath = self::getFilePath($viewName);
+            var_dump($viewFilePath);
             if(is_file($viewFilePath)) {
                 ob_start() and extract($data, EXTR_SKIP);
                 require $viewFilePath;
@@ -37,6 +38,11 @@ class View {
                 throw new \UnexpectedValueException("View file does not exist!");
             }
         }
+    }
+
+    public static function includee($viewName)
+    {
+        static::make($viewName, get_defined_vars());
     }
 
     public static function make_bak($viewName = null, $data = array())

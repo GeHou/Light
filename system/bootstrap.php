@@ -26,7 +26,7 @@ Class Light {
             'Config' => 'system\\core\\Config',
             'Route' => 'system\\core\\Router',
             'Controller' => 'system\\core\\Controller',
-            'View' => 'system\\view\\View',
+            'View' => 'system\\core\\View',
             'DB' => 'system\\db\\Database',
             'Event' => 'system\\core\\Event',
             'L' => 'system\\tool\\Helper',

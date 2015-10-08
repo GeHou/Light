@@ -1,7 +1,5 @@
 <?php
 
-use Light\Medoo;
-
 class HomeController extends BaseController {
 
     public function index()
