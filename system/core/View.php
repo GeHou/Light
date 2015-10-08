@@ -28,7 +28,6 @@ class View {
         } else {
 
             $viewFilePath = self::getFilePath($viewName);
-            var_dump($viewFilePath);
             if(is_file($viewFilePath)) {
                 ob_start() and extract($data, EXTR_SKIP);
                 require $viewFilePath;
