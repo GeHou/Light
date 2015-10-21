@@ -1,7 +1,7 @@
 <?php
 # 对应于Request，它代表了一个HTTP响应。这个对象包括了返回头，HTTP状态码和返回体。
 
-namespace system\http;
+namespace system\net;
 
 class Response
 {

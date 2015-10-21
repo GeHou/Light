@@ -14,3 +14,5 @@
 // require APP_PATH . '/route.php';
 
 $app = require 'system/bootstrap.php';
+
+$app->run();

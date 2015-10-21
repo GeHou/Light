@@ -4,7 +4,7 @@ namespace system\core;
 
 use Closure;
 
-class IoC {
+class Ioc {
 
 	/**
 	 * The registered dependencies.

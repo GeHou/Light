@@ -42,6 +42,10 @@
 
 require 'core/Loader.php';
 
+$loader = new system\core\Loader;
+$loader->register();
+$loader->addNamespace('system', './system');
+
 // Dotenv::load(__DIR__.'/../');
 
 /*
@@ -55,7 +59,7 @@ require 'core/Loader.php';
 |
 */
 
-$app = new Laravel\Lumen\Application(
+$app = new system\core\Application(
     realpath(__DIR__.'/../')
 );
 
@@ -74,15 +78,15 @@ $app = new Laravel\Lumen\Application(
 |
 */
 
-$app->singleton(
-    Illuminate\Contracts\Debug\ExceptionHandler::class,
-    App\Exceptions\Handler::class
-);
+// $app->singleton(
+//     Illuminate\Contracts\Debug\ExceptionHandler::class,
+//     App\Exceptions\Handler::class
+// );
 
-$app->singleton(
-    Illuminate\Contracts\Console\Kernel::class,
-    App\Console\Kernel::class
-);
+// $app->singleton(
+//     Illuminate\Contracts\Console\Kernel::class,
+//     App\Console\Kernel::class
+// );
 
 /*
 |--------------------------------------------------------------------------
@@ -133,7 +137,7 @@ $app->singleton(
 */
 
 $app->group(['namespace' => 'App\Http\Controllers'], function ($app) {
-    require __DIR__.'/../app/Http/routes.php';
+    require __DIR__.'/../app/routes.php';
 });
 
 return $app;

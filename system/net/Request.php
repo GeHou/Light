@@ -1,7 +1,7 @@
 <?php
 # 代表了一个HTTP请求。所有来自$_GET,$_POST,$_COOKIE,$_FILES中的数据都要通过Request类获取和访问。默认的Request属性就包括url,base,method,user_agent等。
 
-namespace system\http;
+namespace system\net;
 
 use system\tool\Collection;
 
